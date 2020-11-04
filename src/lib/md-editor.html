@@ -94,21 +94,13 @@
           <i class="fa fa-file-code-o"></i>
         </button>
       </div>
-      <div class="btn-group">
-        <button
-          class="btn btn-sm btn-default"
-          type="button"
-          [attr.title]="showPreviewPanel ? 'Hide Preview' : 'Show Preview'"
-          (click)="togglePreview()"
-          *ngIf="!hideIcons.TogglePreview"
-        >
-          <i
-            class="fa"
-            [class.fa-eye]="!showPreviewPanel"
-            [class.fa-eye-slash]="showPreviewPanel"
-          ></i>
+      <!-- <div class="btn-group">
+        <button class="btn btn-sm btn-default" type="button"
+          [attr.title]="showPreviewPanel ? 'Hide Preview' : 'Show Preview'" (click)="togglePreview()"
+          *ngIf="!hideIcons.TogglePreview">
+          <i class="fa" [class.fa-eye]="!showPreviewPanel" [class.fa-eye-slash]="showPreviewPanel"></i>
         </button>
-      </div>
+      </div> -->
       <div class="btn-group pull-right hide-split">
         <button
           class="btn btn-sm btn-default"
