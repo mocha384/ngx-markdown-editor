@@ -1,30 +1,30 @@
-import { Component } from '@angular/core';
-import { UploadResult, MdEditorOption } from './../../../src/public_api';
+import { Component } from "@angular/core";
+import { UploadResult, MdEditorOption } from "./../../../src/public_api";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.scss"],
 })
 export class AppComponent {
-
   public options: MdEditorOption = {
-    showPreviewPanel: false,
+    showPreviewPanel: true,
     enablePreviewContentClick: false,
     resizable: true,
     customRender: {
       image: function (href: string, title: string, text: string) {
-        let out = `<img style="max-width: 100%; border: 20px solid red;" src="${href}" alt="${text}"`;
+        // let out = `<img style="max-width: 100%; border: 20px solid red;" src="${href}" alt="${text}"`;
+        let out = `<img style="max-width: 100%;" src="${href}" alt="${text}"`;
         if (title) {
           out += ` title="${title}"`;
         }
         out += (<any>this.options).xhtml ? "/>" : ">";
         return out;
-      }
-    }
+      },
+    },
   };
   public content: string;
-  public mode: string = 'editor';
+  public mode: string = "editor";
 
   constructor() {
     this.preRender = this.preRender.bind(this);
@@ -32,24 +32,26 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    let contentArr = ['# Hello, Markdown Editor!'];
-    contentArr.push('```javascript ');
-    contentArr.push('function Test() {');
-    contentArr.push('	console.log("Test");');
-    contentArr.push('}');
-    contentArr.push('```');
-    contentArr.push(' Name | Type');
-    contentArr.push(' ---- | ----');
-    contentArr.push(' A | Test');
-    contentArr.push('![](http://lon-yang.github.io/markdown-editor/favicon.ico)');
-    contentArr.push('');
-    contentArr.push('- [ ] Taks A');
-    contentArr.push('- [x] Taks B');
-    contentArr.push('- test');
-    contentArr.push('');
-    contentArr.push('[Link](https://www.google.com)');
-    contentArr.push('');
-    this.content = contentArr.join('\r\n');
+    // let contentArr = ["# Hello, Markdown Editor!"];
+    // contentArr.push("```javascript ");
+    // contentArr.push("function Test() {");
+    // contentArr.push('	console.log("Test");');
+    // contentArr.push("}");
+    // contentArr.push("```");
+    // contentArr.push(" Name | Type");
+    // contentArr.push(" ---- | ----");
+    // contentArr.push(" A | Test");
+    // contentArr.push(
+    //   "![](http://lon-yang.github.io/markdown-editor/favicon.ico)"
+    // );
+    // contentArr.push("");
+    // contentArr.push("- [ ] Taks A");
+    // contentArr.push("- [x] Taks B");
+    // contentArr.push("- test");
+    // contentArr.push("");
+    // contentArr.push("[Link](https://www.google.com)");
+    // contentArr.push("");
+    // this.content = contentArr.join("\r\n");
   }
 
   togglePreviewPanel() {
@@ -58,15 +60,16 @@ export class AppComponent {
   }
 
   changeMode() {
-    if (this.mode === 'editor') {
-      this.mode = 'preview';
+    if (this.mode === "editor") {
+      this.mode = "preview";
     } else {
-      this.mode = 'editor';
+      this.mode = "editor";
     }
   }
 
   togglePreviewClick() {
-    this.options.enablePreviewContentClick = !this.options.enablePreviewContentClick;
+    this.options.enablePreviewContentClick = !this.options
+      .enablePreviewContentClick;
     this.options = Object.assign({}, this.options);
   }
 
@@ -84,8 +87,8 @@ export class AppComponent {
           result.push({
             name: file.name,
             url: `https://avatars3.githubusercontent.com/${file.name}`,
-            isImg: file.type.indexOf('image') !== -1
-          })
+            isImg: file.type.indexOf("image") !== -1,
+          });
         }
         resolve(result);
       }, 3000);
@@ -103,6 +106,7 @@ export class AppComponent {
 
   preRender(mdContent) {
     console.log(`preRender fired`);
+    console.log(mdContent);
     // return new Promise((resolve) => {
     //   setTimeout(() => {
     //     resolve(mdContent);
@@ -113,6 +117,7 @@ export class AppComponent {
 
   postRender(html) {
     console.log(`postRender fired`);
+    console.log(html);
     // return '<h1>Test</h1>';
     return html;
   }
