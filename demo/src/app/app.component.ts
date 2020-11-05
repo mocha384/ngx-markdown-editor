@@ -8,9 +8,9 @@ import { UploadResult, MdEditorOption } from "./../../../src/public_api";
 })
 export class AppComponent {
   public options: MdEditorOption = {
-    showPreviewPanel: true,
+    showPreviewPanel: false,
     enablePreviewContentClick: false,
-    resizable: true,
+    resizable: false,
     customRender: {
       image: function (href: string, title: string, text: string) {
         // let out = `<img style="max-width: 100%; border: 20px solid red;" src="${href}" alt="${text}"`;
