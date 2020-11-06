@@ -11,19 +11,42 @@ export class AppComponent {
     showPreviewPanel: false,
     enablePreviewContentClick: false,
     resizable: false,
-    customRender: {
-      image: function (href: string, title: string, text: string) {
-        // let out = `<img style="max-width: 100%; border: 20px solid red;" src="${href}" alt="${text}"`;
-        let out = `<img style="max-width: 100%;" src="${href}" alt="${text}"`;
-        if (title) {
-          out += ` title="${title}"`;
-        }
-        out += (<any>this.options).xhtml ? "/>" : ">";
-        return out;
-      },
-    },
+    // customRender: {
+    //   image: function (href: string, title: string, text: string) {
+    //     console.log(`href : ${href}`);
+    //     console.log(`title : ${title}`);
+    //     console.log(`text : ${text}`);
+    //     // let out = `<img style="max-width: 100%; border: 20px solid red;" src="${href}" alt="${text}"`;
+    //     let out = `<img style="width: 500px; height:400px" src="${href}" alt="${text}"`;
+    //     if (title) {
+    //       out += ` title="${title}"`;
+    //     }
+    //     out += (<any>this.options).xhtml ? "/>" : ">";
+
+    //     console.log(`out : ${out}`);
+    //     return out;
+    //   },
+    // },
   };
-  public content: string;
+  public content: string = `![](https://image.cnbcfm.com/api/v1/image/105992231-1561667465295gettyimages-521697453.jpeg?v=1561667497&w=1600&h=900)`;
+  //   = `## Markdown __rulez__!
+  // ---
+
+  // ### Syntax highlight
+  // \`\`\`typescript
+  // const language = 'typescript';
+  // \`\`\`
+
+  // :heart:
+  // ### Lists
+  //  1. Ordered list
+  //  2. Another bullet point
+  //  - Unordered list
+  //  - Another unordered bullet point
+
+  // ### Blockquote
+  // > Blockquote to the max`;
+
   public mode: string = "editor";
 
   constructor() {
@@ -60,11 +83,7 @@ export class AppComponent {
   }
 
   changeMode() {
-    if (this.mode === "editor") {
-      this.mode = "preview";
-    } else {
-      this.mode = "editor";
-    }
+    this.mode = "editor";
   }
 
   togglePreviewClick() {
@@ -117,7 +136,7 @@ export class AppComponent {
 
   postRender(html) {
     console.log(`postRender fired`);
-    console.log(html);
+    // console.log(html);
     // return '<h1>Test</h1>';
     return html;
   }
